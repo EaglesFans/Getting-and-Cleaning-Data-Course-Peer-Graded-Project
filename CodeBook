@@ -38,7 +38,8 @@ Author Choong-Hoon Hyun
       ###  Merged_dataset <- cbind(Subject, Y, X): This will create one merged dataset to make a tidy dataset. 
 
 # Step 2. Extracts only the measurements on the mean and standard deviation for each measurement.
-  ## TidyData <- Merged_dataset %>% select(subject, code, contains("mean"), contains("std")): This dataset is made by subsetting Merged_dataset. We only need "subject, code and mean and standard deviation for each measurement.
+  ## TidyData <- Merged_dataset %>% select(subject, code, contains("mean"), contains("std")): This dataset is made by subsetting Merged_dataset.
+     We only need "subject, code and mean and standard deviation for each measurement.
 
 # Step 3. Uses descriptive activity names to name the activities in the data set
 TidyData$code <- activities[TidyData$code, 2]
