@@ -63,5 +63,5 @@ Author Choong-Hoon Hyun
   ## Final_Data <- TidyData %>% group_by(subject, activity) %>% summarize_all(funs(mean)):
      It is made by sumarizing TidyData taking the means of each variable for each activity and each subject. 
      after groupped by subject and activity. 
-  ## write.table(Final_Data, "Final_Data.txt", row.names = FALSE): Export Fanal_Data into Final_Data.txt file.
+  ## write.table(Final_Data, "Final_Data.txt", row.name = FALSE): Export Fanal_Data into Final_Data.txt file.
 
