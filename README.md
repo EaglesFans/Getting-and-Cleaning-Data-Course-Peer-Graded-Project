@@ -15,4 +15,4 @@ Read Me file | [Repo Link](https://github.com/EaglesFans/Getting-and-Cleaning-Da
 Github Repo | [Repo Link](https://github.com/EaglesFans/Getting-and-Cleaning-Data-Course-Peer-Graded-Project)
 R Script for the project | [R script Link](https://github.com/EaglesFans/Getting-and-Cleaning-Data-Course-Peer-Graded-Project/blob/main/run_analysis.R)
 Tidy Data Set | [Data Set Link](https://github.com/EaglesFans/Getting-and-Cleaning-Data-Course-Peer-Graded-Project/blob/main/Final_Data.txt)
-Codebook |
+Codebook | [Codebook Link](https://github.com/EaglesFans/Getting-and-Cleaning-Data-Course-Peer-Graded-Project/blob/main/CodeBook)
