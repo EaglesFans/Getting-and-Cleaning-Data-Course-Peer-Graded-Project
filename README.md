@@ -13,8 +13,11 @@ One of the most exciting areas in all of data science right now is wearable comp
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 Here are the data for the project:
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
-You should create one R script called run_analysis.R that does the following.
-   
+
+# Files and how the R scrip works
+## 
+
+## The R script called run_analysis.R perfomms with the following five steps.   
 1. Merges the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement.
 3. Uses descriptive activity names to name the activities in the data set
