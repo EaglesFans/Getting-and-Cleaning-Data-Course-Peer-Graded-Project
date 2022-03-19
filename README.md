@@ -12,3 +12,4 @@ Author: Choong-Hoon Hyun
 Item | Link
 --- | ---
 Read Me file | [Repo Link](https://github.com/EaglesFans/Getting-and-Cleaning-Data-Course-Peer-Graded-Project/blob/main/README.md)
+Github Repo | [Repo Link](https://github.com/EaglesFans/Getting-and-Cleaning-Data-Course-Peer-Graded-Project)
