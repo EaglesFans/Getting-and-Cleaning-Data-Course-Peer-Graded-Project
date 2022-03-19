@@ -2,20 +2,19 @@ Title: Getting and Cleaning Data Project for Week 4 Project
 Author Choong-Hoon Hyun
 
 # The run_analysis.R script is written with the following five steps. 
-
 1. Merges the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement.
 3. Uses descriptive activity names to name the activities in the data set
 4. Appropriately labels the data set with descriptive variable names.
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-library(dplyr)
+# package used for this project is "dplyr".
 
-## Download package
-fileUrl1 = "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-f1 = file.path(getwd(), "Dataset.zip")
-download.file(fileUrl1, f1, method = "curl")
-unzip(zipfile = "Dataset.zip")
+# 1. Merges the training and the test sets to create one data set.
+  ## 1.1  The dataset is downaloded and extracted in the folder named UCI HAR Dataset.
+  ## 1.2  Load data activity Labels and Features:
+          features <- read.table("UCI HAR Dataset/features.txt", col.names = c("n", "functions"))
+          - The "features" selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ.
 
 ## Load data activity Labels and Features
 features <- read.table("UCI HAR Dataset/features.txt", col.names = c("n", "functions"))
