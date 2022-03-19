@@ -3,3 +3,4 @@ This is a peer graded project for Getting and Cleaning Cleaning Data Course
 
 Author: Choong-Hoon Hyun
 
+# Goal of the Project 
