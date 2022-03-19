@@ -10,39 +10,40 @@ Author Choong-Hoon Hyun
 
 # package used for this project is "dplyr".
 
-# 1. Merges the training and the test sets to create one data set.
+# Step 1: Merges the training and the test sets to create one data set.
   ## 1.1  The dataset is downaloded and extracted in the folder named UCI HAR Dataset.
   ## 1.2  Load data activity Labels and Features:
-          features <- read.table("UCI HAR Dataset/features.txt", col.names = c("n", "functions"))
-          - The "features" selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ.
+      ### features <- read.table("UCI HAR Dataset/features.txt", col.names = c("n", "functions"))
+          : The "features" selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ.
+      ### activities <- read.table("UCI HAR Dataset/activity_labels.txt", col.names = c("code", "activity"))
+          : This has labels of each activity. The activities will be used to label name columns of "TidyData"
+  ## 1.3  Load test data-sets:
+      ###  subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
+           : Load the volunteer test subjects being observed. 
+      ###  x_test <- read.table("UCI HAR Dataset/test/X_test.txt", col.names = features$functions)
+           : This has the recorded test data. 
+      ###  y_test <- read.table("UCI HAR Dataset/test/Y_test.txt", col.names = "code")
+           : It has the activity codes associated with x_test
+  ## 1.4 Load train data-sets
+      ###  subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
+           : Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30. 
+      ###  x_train <- read.table("UCI HAR Dataset/train/X_train.txt", col.names = features$functions)
+           : It has recorded training dataset. 
+      ###  y_train <- read.table("UCI HAR Dataset/train/Y_train.txt", col.names = "code")
+           : t has the activity codes associated with x_train        
+  ## 1.5 Create one data set.
+      ###  X <- rbind(x_train, x_test): X is made by merging x_train and x_test with rbind() function 
+      ###  Y <- rbind(y_train, y_test): Y is created by merging y_train and y_test with rbind() function 
+      ###  Subject <- rbind(subject_train, subject_test): Subject is made by merging subject_train and subject_test with rbind() function
+      ###  Merged_dataset <- cbind(Subject, Y, X): This will create one merged dataset to make a tidy dataset. 
 
-## Load data activity Labels and Features
-features <- read.table("UCI HAR Dataset/features.txt", col.names = c("n", "functions"))
-activities <- read.table("UCI HAR Dataset/activity_labels.txt", col.names = c("code", "activity"))
-
-## Load test data-sets
-subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
-x_test <- read.table("UCI HAR Dataset/test/X_test.txt", col.names = features$functions)
-y_test <- read.table("UCI HAR Dataset/test/Y_test.txt", col.names = "code")
-
-## Load train data-sets
-subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
-x_train <- read.table("UCI HAR Dataset/train/X_train.txt", col.names = features$functions)
-y_train <- read.table("UCI HAR Dataset/train/Y_train.txt", col.names = "code")
-
-## Step 1: Merges the training and the test sets to create one data set.
-X <- rbind(x_train, x_test)
-Y <- rbind(y_train, y_test)
-Subject <- rbind(subject_train, subject_test)
-Merged_dataset <- cbind(Subject, Y, X)
-
-## 2. Extracts only the measurements on the mean and standard deviation for each measurement.
+## Step 2. Extracts only the measurements on the mean and standard deviation for each measurement.
 TidyData <- Merged_dataset %>% select(subject, code, contains("mean"), contains("std"))
 
-## 3. Uses descriptive activity names to name the activities in the data set
+## Step 3. Uses descriptive activity names to name the activities in the data set
 TidyData$code <- activities[TidyData$code, 2]
 
-## 4. Appropriately labels the data set with descriptive variable names.
+## Step 4. Appropriately labels the data set with descriptive variable names.
 names(TidyData)[2] = "activity"
 names(TidyData) <- gsub("Acc", "Accelerometer", names(TidyData))
 names(TidyData) <-gsub("Gyro", "Gyroscope", names(TidyData))
@@ -57,7 +58,7 @@ names(TidyData)<-gsub("-freq()", "Frequency", names(TidyData), ignore.case = TRU
 names(TidyData)<-gsub("angle", "Angle", names(TidyData))
 names(TidyData)<-gsub("gravity", "Gravity", names(TidyData))
 
-## 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+## Step 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 Final_Data <- TidyData %>% group_by(subject, activity) %>% 
   summarize_all(funs(mean))
 write.table(Final_Data, "Final_Data.txt", row.names = FALSE)
