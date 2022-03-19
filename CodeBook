@@ -39,28 +39,29 @@ Author Choong-Hoon Hyun
 
 # Step 2. Extracts only the measurements on the mean and standard deviation for each measurement.
   ## TidyData <- Merged_dataset %>% select(subject, code, contains("mean"), contains("std")): This dataset is made by subsetting Merged_dataset.
-     We only need "subject, code and mean and standard deviation for each measurement.
+     We only need "subject", "code", and "mean" and "standard deviation" for each measurement.
 
 # Step 3. Uses descriptive activity names to name the activities in the data set
-TidyData$code <- activities[TidyData$code, 2]
+  ## TidyData$code <- activities[TidyData$code, 2]: The code in TidyData is replaced by corresponding names of each activity on activities
 
 # Step 4. Appropriately labels the data set with descriptive variable names.
-names(TidyData)[2] = "activity"
-names(TidyData) <- gsub("Acc", "Accelerometer", names(TidyData))
-names(TidyData) <-gsub("Gyro", "Gyroscope", names(TidyData))
-names(TidyData)<-gsub("BodyBody", "Body", names(TidyData))
-names(TidyData)<-gsub("Mag", "Magnitude", names(TidyData))
-names(TidyData)<-gsub("^t", "Time", names(TidyData))
-names(TidyData)<-gsub("^f", "Frequency", names(TidyData))
-names(TidyData)<-gsub("tBody", "TimeBody", names(TidyData))
-names(TidyData)<-gsub("-mean()", "Mean", names(TidyData), ignore.case = TRUE)
-names(TidyData)<-gsub("-std()", "STD", names(TidyData), ignore.case = TRUE)
-names(TidyData)<-gsub("-freq()", "Frequency", names(TidyData), ignore.case = TRUE)
-names(TidyData)<-gsub("angle", "Angle", names(TidyData))
-names(TidyData)<-gsub("gravity", "Gravity", names(TidyData))
+  ## names(TidyData)[2] = "activity": This Changes the name of the 2nd column from "code" to "activity".
+  ## names(TidyData) <- gsub("Acc", "Accelerometer", names(TidyData)): This replaces all "acc" in the column's name with "Accelerometer".
+  ## names(TidyData) <-gsub("Gyro", "Gyroscope", names(TidyData)): This replaces all "Gyro" in the column's name with "Gyroscope".
+  ## names(TidyData)<-gsub("BodyBody", "Body", names(TidyData)): This replaces all "BodyBody" in the column's name with "Body".
+  ## names(TidyData)<-gsub("Mag", "Magnitude", names(TidyData)): This replaces all "Mag" in the column's name with "Magnitude".
+  ## names(TidyData)<-gsub("^t", "Time", names(TidyData)): This replaces the string starting with "^t" in the column's name with "Time".
+  ## names(TidyData)<-gsub("^f", "Frequency", names(TidyData)): This replaces the string starting with "^f" in the column's name with "Frequency".
+  ## names(TidyData)<-gsub("tBody", "TimeBody", names(TidyData)): This replaces all "tBody" in the column's name with "TimeBody".
+names(TidyData)<-gsub("-mean()", "Mean", names(TidyData), ignore.case = TRUE): 
+names(TidyData)<-gsub("-std()", "STD", names(TidyData), ignore.case = TRUE): 
+names(TidyData)<-gsub("-freq()", "Frequency", names(TidyData), ignore.case = TRUE): 
+  ## names(TidyData)<-gsub("angle", "Angle", names(TidyData)): This replaces all "angle" in the column's name with "Angle".
+  ## names(TidyData)<-gsub("gravity", "Gravity", names(TidyData)): This replaces all "gravity" in the column's name with "Gravity".
 
 # Step 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-Final_Data <- TidyData %>% group_by(subject, activity) %>% 
-  summarize_all(funs(mean))
-write.table(Final_Data, "Final_Data.txt", row.names = FALSE)
+  ## Final_Data <- TidyData %>% group_by(subject, activity) %>% summarize_all(funs(mean)):
+     It is made by sumarizing TidyData taking the means of each variable for each activity and each subject. 
+     after groupped by subject and activity. 
+  ## write.table(Final_Data, "Final_Data.txt", row.names = FALSE): Export Fanal_Data into Final_Data.txt file.
 
