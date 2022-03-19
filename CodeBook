@@ -53,9 +53,9 @@ Author Choong-Hoon Hyun
   ## names(TidyData)<-gsub("^t", "Time", names(TidyData)): This replaces the string starting with "^t" in the column's name with "Time".
   ## names(TidyData)<-gsub("^f", "Frequency", names(TidyData)): This replaces the string starting with "^f" in the column's name with "Frequency".
   ## names(TidyData)<-gsub("tBody", "TimeBody", names(TidyData)): This replaces all "tBody" in the column's name with "TimeBody".
-names(TidyData)<-gsub("-mean()", "Mean", names(TidyData), ignore.case = TRUE): 
-names(TidyData)<-gsub("-std()", "STD", names(TidyData), ignore.case = TRUE): 
-names(TidyData)<-gsub("-freq()", "Frequency", names(TidyData), ignore.case = TRUE): 
+  ## names(TidyData)<-gsub("-mean()", "Mean", names(TidyData), ignore.case = TRUE): This replaces all "-mean()" in the column's name with "Mean".
+  ## names(TidyData)<-gsub("-std()", "STD", names(TidyData), ignore.case = TRUE): This replaces all "-std()" in the column's name with "STD".
+  ## names(TidyData)<-gsub("-freq()", "Frequency", names(TidyData), ignore.case = TRUE): This replaces all "-freq()" in the column's name with "Frequency".
   ## names(TidyData)<-gsub("angle", "Angle", names(TidyData)): This replaces all "angle" in the column's name with "Angle".
   ## names(TidyData)<-gsub("gravity", "Gravity", names(TidyData)): This replaces all "gravity" in the column's name with "Gravity".
 
